@@ -14,12 +14,8 @@ class LoggedExceptionsGenerator < Rails::Generator::NamedBase
       m.file  "views/query.rjs",                  "app/views/logged_exceptions/query.rjs"
       m.file  "views/query.rxml",                 "app/views/logged_exceptions/query.rxml"
       m.file  "views/show.rjs",                   "app/views/logged_exceptions/show.rjs"
-      
-      
-        require 'will_paginate' unless Kernel.const_defined? 'WillPaginate'
-        WillPaginate.enable
-        include ExceptionLogger
-      
+      m.directory                                 "db/migrate"
+      m.migration_template 'migration.rb', 'db/migrate'
     end
   end
 end
